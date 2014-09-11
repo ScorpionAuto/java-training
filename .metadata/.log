@@ -172,3 +172,54 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-09-11 12:32:11.749 -----------------------------------------------
+eclipse.buildId=4.4.0.I20140606-1215
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/sureshinde/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/sureshinde/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-09-11 12:32:18.198
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2014-09-11 12:32:18.860
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-09-11 12:32:18.860
+!MESSAGE A conflict occurred for ALT+COMMAND+Q P:
+Binding(ALT+COMMAND+Q P,
+	ParameterizedCommand(Command(org.eclipse.php.ui.explorer,PHP Script Explorer,
+		Shows the Script Explorer,
+		Category(org.eclipse.ui.category.views,Views,Commands for opening views,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@27d0376f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+Binding(ALT+COMMAND+Q P,
+	ParameterizedCommand(Command(org.eclipse.ui.views.showView,Show View,
+		Shows a particular view,
+		Category(org.eclipse.ui.category.views,Views,Commands for opening views,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@21948bd1,
+		[Lorg.eclipse.e4.ui.internal.workbench.Parameter;@22617270,,true),[Lorg.eclipse.core.commands.Parameterization;@630febd7),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.mylyn.github.core 4 0 2014-09-11 12:53:15.864
+!MESSAGE Unexpected error: Not Found
+!STACK 0
+org.eclipse.mylyn.internal.github.core.GitHubException: Not Found
+	at org.eclipse.mylyn.internal.github.core.GitHubException.wrap(GitHubException.java:38)
+	at org.eclipse.mylyn.internal.github.core.GitHub.createWrappedStatus(GitHub.java:147)
+	at org.eclipse.mylyn.internal.github.core.issue.IssueConnector.performQuery(IssueConnector.java:341)
+	at org.eclipse.mylyn.internal.tasks.core.sync.SynchronizeQueriesJob.synchronizeQuery(SynchronizeQueriesJob.java:312)
+	at org.eclipse.mylyn.internal.tasks.core.sync.SynchronizeQueriesJob.synchronizeQueries(SynchronizeQueriesJob.java:269)
+	at org.eclipse.mylyn.internal.tasks.core.sync.SynchronizeQueriesJob.run(SynchronizeQueriesJob.java:201)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.egit.github.core.client.RequestException: Not Found (404)
+	at org.eclipse.egit.github.core.client.GitHubClient.createException(GitHubClient.java:552)
+	at org.eclipse.egit.github.core.client.GitHubClient.get(GitHubClient.java:740)
+	at org.eclipse.egit.github.core.client.PageIterator.next(PageIterator.java:173)
+	at org.eclipse.egit.github.core.service.GitHubService.getAll(GitHubService.java:151)
+	at org.eclipse.egit.github.core.service.IssueService.getIssues(IssueService.java:454)
+	at org.eclipse.mylyn.internal.github.core.issue.IssueConnector.performQuery(IssueConnector.java:323)
+	... 4 more
