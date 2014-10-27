@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<error-page>
+	<error-code>java.lang.Exception</error-code>
+	<error-location>/exception.jsp</error-location>
+</error-page>

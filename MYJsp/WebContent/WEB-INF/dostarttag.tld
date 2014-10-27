@@ -1,0 +1,9 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<tag>
+		<name>doStart</name>
+		<tag-class>org.DoStartTag</tag-class> 
+		
+	</tag>
+</taglib>
