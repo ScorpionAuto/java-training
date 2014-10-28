@@ -13,7 +13,6 @@
 <title>Student_id , Subject_id , Marks , Percentage Insert</title>
 </head>
 <body>
-<%! double ou;%>
 
 <%
 	int stud_id= Integer.parseInt(request.getParameter("stu"));
@@ -29,6 +28,8 @@
 	 double o=Double.parseDouble(request.getParameter("val"));
 		out.print("<br/>Out_of :: "+o); 
 	
+		
+	
      try{
         	
          Class.forName("com.mysql.jdbc.Driver");
@@ -38,10 +39,31 @@
          double per=(mrk/o)*100;
          out.print("<br/>percentage :: "+per); 
          
-         int j=st.executeUpdate("insert into marks(sub_id,stud_id,marks,percentage) values('"+sub_id+"','"+stud_id+"','"+mrk+"','"+per+"')");
-     	 out.println("<br/>Data is successfully inserted!"); 
-        
+          int j=st.executeUpdate("insert into marks(sub_id,stud_id,marks,percentage) values('"+sub_id+"','"+stud_id+"','"+mrk+"','"+per+"')");
+       	 out.println("<br/>Data is successfully inserted!"); 
 
+		ResultSet rs=st.executeQuery("select * from marks");
+%>
+		<table border="1" style="border-collapse: collapse;; width: 100%;" >
+            <tr>
+                <th>Id</th>
+                <th>Student_Id</th>
+                <th>Subject_Id</th>
+                <th>Marks</th>
+                <th>Percentage</th>
+            </tr>
+            <% while(rs.next()){ %>
+            <tr>
+                <td> <%= rs.getInt(1) %></td>
+                <td> <%= rs.getString(2) %></td>
+                <td> <%= rs.getString(3) %></td>
+                <td> <%= rs.getInt(4) %></td>
+                <td> <%= rs.getDouble(5) %></td>
+            </tr>
+            <% } %>
+        </table>
+<%	
+				
       }
       catch(Exception e){
         System.out.print(e);
@@ -50,26 +72,5 @@
 	
 %>
 
-<%-- 
-<mysql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/Big_Test"
-     user="root"  password=""/>
- 
-<mysql:query dataSource="${snapshot}" var="result">
-SELECT * from student;
-</mysql:query>
-
-<table>
-	<tr>
-		<th>id</th>
-		<th>br_id</th>
-		<th>stud_name</th>
-	</tr>
-	<tr>
-		<td><c:out value="${row.id}"/></td>
-		<td><c:out value="${row.br_id}"/></td>
-		<td><c:out value="${row.stud_name}"/></td>
-	</tr>
-</table> --%>
 </body>
 </html>

@@ -11,10 +11,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Dropdownlist opration with Database</title>
 </head>
-<%! int ou; %>
 
 <body>
-<form action="drpdwn1.jsp">
+<form action="marks_process.jsp">
 	<mysql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 		     url="jdbc:mysql://localhost:3306/Big_Test"
 		     user="root"  password=""/>

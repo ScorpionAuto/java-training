@@ -23,31 +23,32 @@
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-         int i=st.executeUpdate("insert into branch(br_name) values('"+nm+"')");
-         out.println("Data is successfully inserted!\n\n");
-         nm="";
-      }
-      catch(Exception e){
-        System.out.print(e);
-        e.printStackTrace();
-      }
-	
-%>
-
-<mysql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/Big_Test"
-     user="root"  password=""/>
- 
-<mysql:query dataSource="${snapshot}" var="result">
-SELECT br_name from branch;
-</mysql:query>
-
-
-<select>
-	<c:forEach var="row" items="${result.rows}">
-		<option value="br_name"><c:out value="${row.br_name}"/></option>
-	</c:forEach>
-</select>
+        // int i=st.executeUpdate("insert into branch(br_name) values('"+nm+"')");
+       //  out.println("Data is successfully inserted!<br/><br/>");
+         
+     	 ResultSet rs=st.executeQuery("select * from branch");
+ %>
+ 		<table border="1" style="border-collapse: collapse;; width: 100%;" >
+             <tr>
+                 <th>id</th>
+                 <th>Branch_Name</th>
+             </tr>
+             <% while(rs.next()){ %>
+             <tr>
+                 <td> <%= rs.getInt(1) %></td>
+                 <td> <%= rs.getString(2)%></td>
+             </tr>
+             <% } %>
+         </table>
+ <%	
+ 				
+       }
+       catch(Exception e){
+         System.out.print(e);
+         e.printStackTrace();
+       }
+ 	
+ %>
 
 </body>
 </html>

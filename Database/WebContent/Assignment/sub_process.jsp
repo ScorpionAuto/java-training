@@ -27,37 +27,33 @@
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
          int j=st.executeUpdate("insert into subject(sub_name,out_of) values('"+nm+"','"+ou+"')");
-    	 out.println("<br/>Data is successfully inserted!");
-        
-         nm="";
-      }
-      catch(Exception e){
-        System.out.print(e);
-        e.printStackTrace();
-      }
-	
-%>
-
-<%-- 
-<mysql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/Big_Test"
-     user="root"  password=""/>
+         out.println("<br/>Data is successfully inserted!<br/><br/>");
+         
+     	 ResultSet rs=st.executeQuery("select * from subject");
+ %>
+ 		<table border="1" style="border-collapse: collapse;; width: 100%;" >
+             <tr>
+                 <th>id</th>
+                 <th>Subject_Name</th>
+                 <th>Out_of</th>
+             </tr>
+             <% while(rs.next()){ %>
+             <tr>
+                 <td> <%= rs.getInt(1) %></td>
+                 <td> <%= rs.getString(2)%></td>
+                 <td> <%=  rs.getInt(3) %></td>
+             </tr>
+             <% } %>
+         </table>
+ <%	
+ 				
+       }
+       catch(Exception e){
+         System.out.print(e);
+         e.printStackTrace();
+       }
+ 	
+ %>
  
-<mysql:query dataSource="${snapshot}" var="result">
-SELECT * from student;
-</mysql:query>
-
-<table>
-	<tr>
-		<th>id</th>
-		<th>br_id</th>
-		<th>stud_name</th>
-	</tr>
-	<tr>
-		<td><c:out value="${row.id}"/></td>
-		<td><c:out value="${row.br_id}"/></td>
-		<td><c:out value="${row.stud_name}"/></td>
-	</tr>
-</table> --%>
 </body>
 </html>
