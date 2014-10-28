@@ -1,0 +1,69 @@
+create table branch(id int not null auto_increment primary key,br_name varchar(20));
+
+INSERT INTO `branch`(`br_name`) VALUES ('computer');
+INSERT INTO `branch`(`br_name`) VALUES ('it');
+INSERT INTO `branch`(`br_name`) VALUES ('mech');
+
+SELECT * FROM `branch` WHERE 1
+
+id   br_name
+
+1    computer
+2    it
+3    mech
+
+
+create table student(id int not null auto_increment primary key,br_id int not null references branch(id),stud_name varchar(20));
+
+INSERT INTO `student`(`br_id`, `stud_name`) VALUES (1,'aaa');
+INSERT INTO `student`(`br_id`, `stud_name`) VALUES (2,'bbb');
+INSERT INTO `student`(`br_id`, `stud_name`) VALUES (3,'ccc');
+
+SELECT * FROM `student` WHERE 1
+
+id   br_id   stud_name   
+
+1    1       aaa
+2    2       bbb
+3    3       ccc
+
+create table subject(id int not null auto_increment primary key,sub_name varchar(20),out_of int(5) not null);
+
+INSERT INTO `subject`(`sub_name`, `out_of`) VALUES ('pcd',100),('daa',100),('sa',100) ;
+
+SELECT * FROM `subject` WHERE 1
+
+id   sub_name   out_of   
+
+1    pcd        100
+2    daa        100
+3    sa         100
+
+
+create table marks(id int not null auto_increment primary key,sub_id int not null references subject(id),stud_id int not null references student(id),marks int(5) not null,per double not null);
+
+INSERT INTO `marks`(`sub_id`, `stud_id`, `marks`,'percentage') VALUES (1,1,86,86),(2,3,50,50),(3,3,60,60);
+
+SELECT * FROM `marks` WHERE 1
+
+id   sub_id   stud_id   marks   percentage
+
+1     1       1         86      86
+2     2       2         50      50
+3     3       3         60      60
+
+
+CREATE VIEW v1 AS select branch.id,branch.br_name,student.stud_name from branch inner join student using(id);
+
+CREATE VIEW v2 AS select subject.id,subject.sub_name,marks.marks,marks.percentage from subject inner join marks using(id)
+
+CREATE VIEW final AS select * from v1 inner join v2 using(id);
+
+SELECT * FROM `final` WHERE 1
+
+id     br_name  stud_name   sub_name   marks   percentage
+1      computer aaa          pcd       86      86
+2      it       bbb          daa       50      50
+3      mech     ccc          sa        60      60
+
+
