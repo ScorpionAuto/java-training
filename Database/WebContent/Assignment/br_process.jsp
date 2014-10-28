@@ -23,8 +23,8 @@
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-        // int i=st.executeUpdate("insert into branch(br_name) values('"+nm+"')");
-       //  out.println("Data is successfully inserted!<br/><br/>");
+         int i=st.executeUpdate("insert into branch(br_name) values('"+nm+"')");
+         out.println("Data is successfully inserted!<br/><br/>");
          
      	 ResultSet rs=st.executeQuery("select * from branch");
  %>
