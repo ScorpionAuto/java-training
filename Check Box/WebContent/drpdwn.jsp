@@ -10,11 +10,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Dropdownlist opration with Database</title>
+	
+	<script type="text/javascript">
+		var $ = function(e){ return document.getElementById(e); }
+		var swap = function(val, el){
+		  $(el).value = val;
+		}
+	</script>
 </head>
-<%! int ou; %>
 
 <body>
-<form action="drpdwn1.jsp">
+<form action="marks_process.jsp">
 	<mysql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 		     url="jdbc:mysql://localhost:3306/Big_Test"
 		     user="root"  password=""/>
@@ -26,7 +32,6 @@
 		
 		
 		<select name="stu" id="t">
-			<option value="">Select Student</option>
 			<c:forEach var="row" items="${result.rows}">
 				<option value="<c:out value="${row.id}"/>"> <c:out value="${row.stud_name}"/></option>
 			</c:forEach>
@@ -34,30 +39,19 @@
 		
 	Subject_name :: 	
 		<mysql:query dataSource="${snapshot}" var="result">
-		SELECT id,sub_name,out_of from subject;
+		SELECT id,sub_name from subject;
 		</mysql:query>
 		
 		
-		<select name="sub" onchange="swap(this, 'change')" id="sub_db">
-			<option value="">Select Subject</option>
+		<select onchange="swap(this.value, 'change')">
 			<c:forEach var="row" items="${result.rows}">
-				<option scope="<c:out value="${row.out_of}"/>" value="<c:out value="${row.id}"/>"> <c:out value="${row.sub_name}"/></option>
+				<option value="<c:out value="${row.id}"/>"> <c:out value="${row.sub_name}"/></option>
 			</c:forEach>
 		</select>
-		
-	&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="change" size="3" name="val" readonly/>Out_Of<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="change"><br/>
 	<br/>
 	Marks :: <input type="text" name="mrk"><br/>
 	<input type="submit" value="Insert">
 </form>
-
-<script type="text/javascript">
-
-		var ret = function(e){ return document.getElementById(e); }
-		var swap = function(elem, el){
-		  ret(el).value = elem.options[elem.selectedIndex].getAttribute("scope");
-		}
-</script>
-	
 </body>
 </html>

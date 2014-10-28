@@ -25,6 +25,7 @@
 		
 		
 		<select name="br" id="t">
+			<option value="">Select Branch</option>
 			<c:forEach var="row" items="${result.rows}">
 				<option value="<c:out value="${row.id}"/>"> <c:out value="${row.br_name}"/></option>
 			</c:forEach>

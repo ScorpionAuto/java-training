@@ -1,0 +1,19 @@
+<html>
+<head>
+<title></title>
+<script type="text/javascript">
+var $ = function(e){ return document.getElementById(e); }
+var swap = function(val, el){
+  $(el).value = val;
+}
+</script>
+</head>
+<body>
+<select onchange="swap(this.value, 'change')">
+  <option value="Dogs">Dogs</option>
+  <option value="Cats">Cats</option>
+  <option value="Tiger">Tiger</option>
+</select>
+<input type="text" id="change" style="color: #000" disabled/>
+</body>
+</html>

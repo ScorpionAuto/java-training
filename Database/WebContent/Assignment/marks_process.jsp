@@ -19,30 +19,27 @@
 	int stud_id= Integer.parseInt(request.getParameter("stu"));
 	out.print("<br/>Student_id :: "+stud_id);
 	
-	int sub_id= Integer.parseInt(request.getParameter("sub"));
-	out.print("<br/>subject_id :: "+sub_id);
+ 	int sub_id= Integer.parseInt(request.getParameter("sub"));
+	out.print("<br/>subject_id :: "+sub_id);  
 	
-	int mrk= Integer.parseInt(request.getParameter("mrk"));
-	out.print("<br/>branch_id :: "+mrk);
+	double mrk=Double.parseDouble(request.getParameter("mrk"));
+	out.print("<br/>marks :: "+mrk);
+	
+	
+	 double o=Double.parseDouble(request.getParameter("val"));
+		out.print("<br/>Out_of :: "+o); 
 	
      try{
         	
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-         
-         ResultSet rs=st.executeQuery("select out_of from subject where id='"+sub_id+"'");
-         while(rs.next())
-         {
-        	 ou=rs.getInt("out_of");
-         }
-         out.print("<br/>out_of :: "+ou);
-         
-         double per=(mrk/ou)*100;
-         out.print("<br/>percentage :: "+per);
+                 
+         double per=(mrk/o)*100;
+         out.print("<br/>percentage :: "+per); 
          
          int j=st.executeUpdate("insert into marks(sub_id,stud_id,marks,percentage) values('"+sub_id+"','"+stud_id+"','"+mrk+"','"+per+"')");
-    	 out.println("<br/>Data is successfully inserted!");
+     	 out.println("<br/>Data is successfully inserted!"); 
         
 
       }
