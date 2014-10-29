@@ -66,4 +66,70 @@ id     br_name  stud_name   sub_name   marks   percentage
 2      it       bbb          daa       50      50
 3      mech     ccc          sa        60      60
 
+CREATE TABLE t1 AS SELECT id, br_name, stud_name FROM v;
+
+SELECT * FROM `t1` WHERE 1
+
+id    br_name     stud_name
+
+1     computer    aaa
+2     it          bbb
+3     mech        ccc
+4     production  ddd
+5     Electrical  eee
+
+
+CREATE TABLE t2 AS SELECT id, sub_name, marks,percentage FROM v1;
+
+SELECT * FROM `t2` WHERE 1
+
+
+id    sub_name     marks    percentage
+1     pcd          86       86
+2     daa          50       50
+3     sa           60       60
+4     OOMD         38       76
+5     dsa          48       96
+
+
+
+SELECT * FROM t1 inner join t2 using(id)
+
+id  br_name      stud_name  sub_name     marks    percentage
+1   computer     aaa         pcd          86       86
+2   it           bbb         daa          50       50
+3   mech         ccc         sa           60       60
+4   production   ddd         OOMD         38       76
+5   Electrical   eee         dsa          48       96
+
+
+create table main (sr_no int not null auto_increment primary key) as select br_name,sub_name,stud_name,marks,percentage from final;
+
+INSERT INTO `main`( `br_name`, `sub_name`, `stud_name`, `marks`, `percentage`) VALUES ('dd','dd','dd',45,45);
+
+select * from main ;
+
+sr_no  br_name      stud_name  sub_name     marks    percentage
+1      computer     aaa         pcd          86       86
+2      it           bbb         daa          50       50
+3      mech         ccc         sa           60       60
+4      production   ddd         OOMD         38       76
+5      Electrical   eee         dsa          48       96
+6      dd           dd          dd           45       45
+
+
+delete from main where sr_no=6;
+
+alter table main auto_increment=6;
+
+select * from main ;
+
+sr_no  br_name      stud_name  sub_name     marks    percentage
+1      computer     aaa         pcd          86       86
+2      it           bbb         daa          50       50
+3      mech         ccc         sa           60       60
+4      production   ddd         OOMD         38       76
+5      Electrical   eee         dsa          48       96
+
+
 

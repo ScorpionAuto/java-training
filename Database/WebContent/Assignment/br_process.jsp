@@ -17,7 +17,12 @@
 	String nm=null;
 	nm=request.getParameter("br_nm");
 
-	
+	if(nm==null)
+	{
+		
+	}
+	else
+	{
      try{
         	
          Class.forName("com.mysql.jdbc.Driver");
@@ -47,7 +52,7 @@
          System.out.print(e);
          e.printStackTrace();
        }
- 	
+	}
  %>
 
 </body>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+First Name: <input type="text" id="myText" value="">
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myText").value;
+    document.write(x);
+    document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+</body>
+</html>

@@ -1,4 +1,3 @@
-<%@page import="javax.naming.spi.DirStateFactory.Result"%>
 <%@page import="java.sql.*,java.util.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
@@ -11,45 +10,55 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Student Name Insert</title>
+<title>Index.jsp</title>
 </head>
 <body>
 
+<%! Connection con;
+	Statement st;
+	ResultSet rs,rs1;
+	double per;
+%>
+	
+
+
+
+<form action="marks.jsp" method="post">
+
+	Marks :: <input type="submit"  value="Add/Insert"></button>
+
+</form>		     
+<br/>
+<hr>
+<center><h3> Mark Table List</h3></center>
 <%
-	String nm=null;
-	nm=request.getParameter("stud_nm");
-	out.print("Name :: "+nm);
 	
-	int id= Integer.parseInt(request.getParameter("br"));
-	out.print("<br/>branch_id :: "+id);
-	
-	if(nm==null)
-	{
-		
-	}
-	else
-	{
      try{
-        	
-         Class.forName("com.mysql.jdbc.Driver");
-         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
-         Statement st=con.createStatement();
-          int j=st.executeUpdate("insert into student(br_id,stud_name) values('"+id+"','"+nm+"')");
-     	 out.println("Data is successfully inserted!<br/><br/>");
         
-    	 ResultSet rs=st.executeQuery("select * from student");
+    		 
+    	 	
+          Class.forName("com.mysql.jdbc.Driver");
+          con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
+          st=con.createStatement();
+           
+		  rs=st.executeQuery("select * from marks");
+
 %>
 		<table border="1" style="border-collapse: collapse;; width: 100%;" >
             <tr>
-                <th>id</th>
-                <th>branch_id</th>
-                <th>Student_Name</th>
+                <th>Id</th>
+                <th>Subject_Id</th>
+                <th>Student_Id</th>
+                <th>Marks</th>
+                <th>Percentage</th>
             </tr>
             <% while(rs.next()){ %>
             <tr>
                 <td> <%= rs.getInt(1) %></td>
                 <td> <%= rs.getInt(2) %></td>
-                <td> <%= rs.getString(3) %></td>
+                <td> <%= rs.getInt(3) %></td>
+                <td> <%= rs.getInt(4) %></td>
+                <td> <%= rs.getDouble(5) %></td>
             </tr>
             <% } %>
         </table>
@@ -60,8 +69,8 @@
         System.out.print(e);
         e.printStackTrace();
       }
-	}
+ 	
 %>
 
 </body>
-</html>
+</html>	

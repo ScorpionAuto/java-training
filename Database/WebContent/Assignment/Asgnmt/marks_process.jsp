@@ -28,8 +28,7 @@
 	 double o=Double.parseDouble(request.getParameter("val"));
 		out.print("<br/>Out_of :: "+o); 
 	
-		
-	if(mrk==0)
+	if(mrk==0 && o==0)
 	{
 		
 	}

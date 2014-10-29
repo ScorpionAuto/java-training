@@ -10,44 +10,37 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Subject Name Insert</title>
+<title>Branch Name Insert</title>
 </head>
 <body>
 <%
 	String nm=null;
-	nm=request.getParameter("sub_nm");
-	out.print("Subject Name :: "+nm);
-	
-	int ou= Integer.parseInt(request.getParameter("out"));
-	out.print("<br/>Out_of :: "+ou);
-	
-	if(nm==null && ou==0)
+	nm=request.getParameter("br_nm");
+
+	if(nm==null)
 	{
 		
 	}
-	else
 	{
      try{
         	
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-         int j=st.executeUpdate("insert into subject(sub_name,out_of) values('"+nm+"','"+ou+"')");
-         out.println("<br/>Data is successfully inserted!<br/><br/>");
+         int i=st.executeUpdate("insert into branch(br_name) values('"+nm+"')");
+         out.println("Data is successfully inserted!<br/><br/>");
          
-     	 ResultSet rs=st.executeQuery("select * from subject");
+     	 ResultSet rs=st.executeQuery("select * from branch");
  %>
  		<table border="1" style="border-collapse: collapse;; width: 100%;" >
              <tr>
                  <th>id</th>
-                 <th>Subject_Name</th>
-                 <th>Out_of</th>
+                 <th>Branch_Name</th>
              </tr>
              <% while(rs.next()){ %>
              <tr>
                  <td> <%= rs.getInt(1) %></td>
                  <td> <%= rs.getString(2)%></td>
-                 <td> <%=  rs.getInt(3) %></td>
              </tr>
              <% } %>
          </table>
@@ -60,6 +53,6 @@
        }
 	}
  %>
- 
+
 </body>
 </html>

@@ -84,7 +84,7 @@ public class DisplayEmpData extends JFrame implements ActionListener {
 	        pst = con.prepareStatement("select * from final");
             ResultSet rs = pst.executeQuery();
             int i = 0;
-            if (rs.next()) {
+            while (rs.next()) {
             	id = rs.getString("id");
                 br_name = rs.getString("br_name");
                 stud_name = rs.getString("stud_name");
