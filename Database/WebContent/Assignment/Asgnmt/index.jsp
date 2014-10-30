@@ -1,8 +1,7 @@
 <%@page import="java.sql.*,java.util.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="mysql"%>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -25,12 +24,12 @@
 
 <form action="marks.jsp" method="post">
 
-	Marks :: <input type="submit"  value="Add/Insert"></button>
+	<center>Marks :: <input type="submit"  value="Add/Insert"></center>
 
 </form>		     
 <br/>
 <hr>
-<center><h3> Mark Table List</h3></center>
+<center><h3> Marks Details Table</h3></center>
 <%
 	
      try{
@@ -71,6 +70,7 @@
       }
  	
 %>
+
 
 </body>
 </html>	

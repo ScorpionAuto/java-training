@@ -17,11 +17,11 @@
 
 <%
 	String nm=null;
-	nm=request.getParameter("stud_nm");
-	out.print("Name :: "+nm);
+	nm=request.getParameter("text1");
+	//out.print("Name :: "+nm);
 	
 	int id= Integer.parseInt(request.getParameter("br"));
-	out.print("<br/>branch_id :: "+id);
+	//out.print("<br/>branch_id :: "+id);
 	
 	if(nm==null)
 	{
@@ -34,15 +34,15 @@
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-          int j=st.executeUpdate("insert into student(br_id,stud_name) values('"+id+"','"+nm+"')");
-     	 out.println("Data is successfully inserted!<br/><br/>");
+         int j=st.executeUpdate("insert into student(br_id,stud_name) values('"+id+"','"+nm+"')");
+     	 out.println("<br/>Data is successfully inserted!<br/><br/>");
         
     	 ResultSet rs=st.executeQuery("select * from student");
 %>
 		<table border="1" style="border-collapse: collapse;; width: 100%;" >
             <tr>
-                <th>id</th>
-                <th>branch_id</th>
+                <th>Id</th>
+                <th>Branch_id</th>
                 <th>Student_Name</th>
             </tr>
             <% while(rs.next()){ %>
@@ -62,6 +62,10 @@
       }
 	}
 %>
+
+<form action="index.jsp" method="post">
+	<input type="submit"  value="Index">
+</form>
 
 </body>
 </html>

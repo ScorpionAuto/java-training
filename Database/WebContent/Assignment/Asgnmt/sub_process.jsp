@@ -15,11 +15,11 @@
 <body>
 <%
 	String nm=null;
-	nm=request.getParameter("sub_nm");
-	out.print("Subject Name :: "+nm);
+	nm=request.getParameter("text1");
+	//out.print("Subject Name :: "+nm);
 	
-	int ou= Integer.parseInt(request.getParameter("out"));
-	out.print("<br/>Out_of :: "+ou);
+	int ou= Integer.parseInt(request.getParameter("text2"));
+	//out.print("<br/>Out_of :: "+ou);
 	
 	if(nm==null && ou==0)
 	{
@@ -60,6 +60,10 @@
        }
 	}
  %>
+ 
+ <form action="index.jsp" method="post">
+	<input type="submit"  value="Index">
+</form>
  
 </body>
 </html>

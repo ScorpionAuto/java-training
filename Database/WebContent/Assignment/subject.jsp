@@ -12,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>subject.jsp</title>
 </head>
-<body>
+<body >
 <form action="sub_process.jsp">
 	Subject_Name :: <input type="text" name="sub_nm"><br/>
 	Out_of :: <input type="text" name="out"><br/>

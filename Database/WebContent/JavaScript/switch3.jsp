@@ -4,22 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>switch3.jsp</title>
 </head>
 <body>
-<p id="demo"></p>
+
 <input type="button" value="switch1" onclick="newDoc()" id="s1">
 
 
 <script type="text/javascript">
 	
-	function newDoc() {
+function newDoc() {
 	if(document.getElementById("s1"))
 	{
 		window.location.assign("switch1.jsp");
 	}
 	
 }
-</script> 
+
+</script>
 </body>
 </html>

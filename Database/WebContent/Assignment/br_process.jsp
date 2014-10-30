@@ -15,7 +15,7 @@
 <body>
 <%
 	String nm=null;
-	nm=request.getParameter("br_nm");
+	nm=request.getParameter("text1");
 
 	if(nm==null)
 	{

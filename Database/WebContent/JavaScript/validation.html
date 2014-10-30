@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form name="frm" action="validation_show.html" method="post" onsubmit="return validateForm()">
+	Name :: <input type="text" name="nm">
+	mark :: <input type="text" name="mrk">
+	<input type="submit" value="submit">
+</form>
+
+<script type="text/javascript">
+
+	var specialKeys = new Array();
+	
+	specialKeys.push(8); //Backspace
+	function IsNumeric(e) {
+	    var keyCode = e.which ? e.which : e.keyCode
+	    var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+	    document.getElementById("error").style.display = ret ? "none" : "inline";
+	    return ret;
+	}
+</script>
+</body>
+</html>

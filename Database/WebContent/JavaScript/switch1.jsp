@@ -9,17 +9,38 @@
 <body>
 
 <p id="demo"></p>
-<input type="button" value="switch1" onclick="Redirect()" id="s1">
+<input type="button" value="switch2" onclick="newDoc()" id="s2">
+<input type="button" value="switch3" onclick="newDoc1()" id="s3">
 
 <script type="text/javascript">
-	
-function Redirect() 
+
+function newDoc() {
+	if(document.getElementById("s2"))
+	{
+		window.location.replace("switch2.jsp");
+	}
+}
+
+function newDoc1() {
+	if(document.getElementById("s3"))
+	{
+		window.location.replace("switch3.jsp");
+	}
+}
+
+/* function Redirect() 
 	{
 		if(document.getElementById("s1"))
+		{
 			window.location="switch2.jsp";
+		}
+		else
+		{
+			window.location="switch3.jsp";
+		}
 		
 		setTimeout('Redirect()', 10000);
-	}
+	} */
 </script> 
 
 </body>

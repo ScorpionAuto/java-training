@@ -16,17 +16,17 @@
 
 <%
 	int stud_id= Integer.parseInt(request.getParameter("stu"));
-	out.print("<br/>Student_id :: "+stud_id);
+//	out.print("<br/>Student_id :: "+stud_id);
 	
  	int sub_id= Integer.parseInt(request.getParameter("sub"));
-	out.print("<br/>subject_id :: "+sub_id);  
+//	out.print("<br/>subject_id :: "+sub_id);  
 	
-	double mrk=Double.parseDouble(request.getParameter("mrk"));
-	out.print("<br/>marks :: "+mrk);
+	double mrk=Double.parseDouble(request.getParameter("text1"));
+//	out.print("<br/>marks :: "+mrk);
 	
 	
-	 double o=Double.parseDouble(request.getParameter("val"));
-		out.print("<br/>Out_of :: "+o); 
+	 double o=Double.parseDouble(request.getParameter("text2"));
+		//out.print("<br/>Out_of :: "+o); 
 	
 	if(mrk==0 && o==0)
 	{
@@ -41,7 +41,7 @@
          Statement st=con.createStatement();
                  
          double per=(mrk/o)*100;
-         out.print("<br/>percentage :: "+per); 
+         //out.print("<br/>percentage :: "+per); 
          
           int j=st.executeUpdate("insert into marks(sub_id,stud_id,marks,percentage) values('"+sub_id+"','"+stud_id+"','"+mrk+"','"+per+"')");
        	 out.println("<br/>Data is successfully inserted!"); 
@@ -75,6 +75,10 @@
       }
 	}
 %>
+
+<form action="index.jsp" method="post">
+	<input type="submit"  value="Index">
+</form>
 
 </body>
 </html>

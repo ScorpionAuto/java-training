@@ -1,0 +1,40 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>JavaScript form validation - checking all letters and numbers</title>  
+</head>  
+<body onload='document.form1.text1.focus()'>  
+
+<h2>Enter your Registration Number & Name then Submit</h2>  
+<form name="form1" action="index1.html" onsubmit="return alphanumeric(document.form1.text1,document.form1.text2)">  
+	Number :: <input type='text' name='text1'/>
+	Name :: <input type='text' name='text2'/>
+	
+	<input type="submit" name="submit" value="Submit"  />
+</form>  
+
+<script>
+	function alphanumeric(x,y)  
+	{   
+		var letters = /^[0-9]+$/;
+		var letter1=/^[a-z A-Z _]+$/;
+		
+		if(x.value.match(letters) && y.value.match(letter1))  
+		{  
+			alert('Your number & character have accepted ::');  
+			document.form1.text1.focus();  
+			return true;  
+		}  
+		else  
+		{  
+			alert('Please enter correctly');  
+			return false;  
+		}  
+		
+		
+	}  
+		
+</script>  
+</body>  
+</html>  
