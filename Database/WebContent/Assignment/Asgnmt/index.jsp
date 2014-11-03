@@ -40,24 +40,26 @@
           con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
           st=con.createStatement();
            
-		  rs=st.executeQuery("select * from marks");
+		  rs=st.executeQuery("SELECT marks.id as sr_no, student.name as student_name, branch.name as branch_name, subject.name as subject_name, marks, TRUNCATE(((marks.marks/subject.out_of)*100),2) as percentage FROM `marks` left join student on (student.id = marks.student_id) left join branch on (branch.id = student.branch_id) left join subject on (subject.id = marks.subject_id)");
 
 %>
 		<table border="1" style="border-collapse: collapse;; width: 100%;" >
             <tr>
-                <th>Id</th>
-                <th>Subject_Id</th>
-                <th>Student_Id</th>
+                <th>Sr</th>
+                <th>Student</th>
+                <th>Branch</th>
+                <th>Subject</th>
                 <th>Marks</th>
                 <th>Percentage</th>
             </tr>
             <% while(rs.next()){ %>
             <tr>
                 <td> <%= rs.getInt(1) %></td>
-                <td> <%= rs.getInt(2) %></td>
-                <td> <%= rs.getInt(3) %></td>
-                <td> <%= rs.getInt(4) %></td>
-                <td> <%= rs.getDouble(5) %></td>
+                <td> <%= rs.getString(2) %></td>
+                <td> <%= rs.getString(3) %></td>
+                <td> <%= rs.getString(4) %></td>
+                <td> <%= rs.getInt(5) %></td>
+                <td><%=rs.getDouble(6) %>
             </tr>
             <% } %>
         </table>
