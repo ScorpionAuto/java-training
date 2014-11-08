@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<link href="style.css" rel="stylesheet" type="text/css"/>
+
 <%! Connection con;
 	Statement st;
 	ResultSet rs,rs1;
@@ -20,12 +22,10 @@
 %>
 	
 
-
-
 <form action="marks.jsp" method="post">
-
-	<center>Marks :: <input type="submit"  value="Add/Insert"></center>
-
+	<span style=' float: left;padding-top: 10px;padding-left: 40px;padding-bottom: 0;font-size: 20px;clear: both;'>Marks</span>
+			<input type='submit' value='Add/Insert' style=' background-color: #9DC45F;color: white;width: 99px;height: 40px;font-weight: bold;font-size: medium;border-radius: 12px;float: right;'>;
+	<br/><br/>
 </form>		     
 <br/>
 <hr>
@@ -43,7 +43,7 @@
 		  rs=st.executeQuery("SELECT marks.id as sr_no, student.name as student_name, branch.name as branch_name, subject.name as subject_name, marks, TRUNCATE(((marks.marks/subject.out_of)*100),2) as percentage FROM `marks` left join student on (student.id = marks.student_id) left join branch on (branch.id = student.branch_id) left join subject on (subject.id = marks.subject_id)");
 
 %>
-		<table border="1" style="border-collapse: collapse;; width: 100%;" >
+		<table class="my" border="1" style="border-collapse: collapse;; width: 100%;" >
             <tr>
                 <th>Sr</th>
                 <th>Student</th>

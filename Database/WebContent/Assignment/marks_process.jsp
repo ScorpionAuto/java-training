@@ -44,8 +44,8 @@
          double per=(mrk/o)*100;
          out.print("<br/>percentage :: "+per); 
          
-          int j=st.executeUpdate("insert into marks(sub_id,stud_id,marks,percentage) values('"+sub_id+"','"+stud_id+"','"+mrk+"','"+per+"')");
-       	 out.println("<br/>Data is successfully inserted!"); 
+      //    int j=st.executeUpdate("insert into marks(sub_id,stud_id,marks,percentage) values('"+sub_id+"','"+stud_id+"','"+mrk+"','"+per+"')");
+   //    	 out.println("<br/>Data is successfully inserted!"); 
 
 		ResultSet rs=st.executeQuery("select * from marks");
 %>

@@ -1,0 +1,11 @@
+.my { width:100%; border-collapse:collapse;  }
+.my th { padding:8px; border:#999 1px solid;background-color:#CFE7B3; }
+ 
+.my td { padding:8px; border:#999 1px solid; }
+ 
+.my tr:nth-child(even) { /*(even) or (2n 0)*/
+	background: white;
+}
+.my tr:nth-child(odd) { /*(odd) or (2n 1)*/
+	background: #F0F9E4;
+}

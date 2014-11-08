@@ -20,27 +20,27 @@
 		     
 	Student_name :: 	
 		<mysql:query dataSource="${snapshot}" var="result">
-		SELECT id,stud_name from student;
+		SELECT id,name from student;
 		</mysql:query>
 		
 		
 		<select name="stu" id="t">
 			<option value="">Select Student</option>
 			<c:forEach var="row" items="${result.rows}">
-				<option value="<c:out value="${row.id}"/>"> <c:out value="${row.stud_name}"/></option>
+				<option value="<c:out value="${row.id}"/>"> <c:out value="${row.name}"/></option>
 			</c:forEach>
 		</select><br/>
 		
 	Subject_name :: 	
 		<mysql:query dataSource="${snapshot}" var="result">
-		SELECT id,sub_name,out_of from subject;
+		SELECT id,name,out_of from subject;
 		</mysql:query>
 		
 		
 		<select name="sub" onchange="swap(this, 'change')" id="sub_db">
 			<option value="">Select Subject</option>
 			<c:forEach var="row" items="${result.rows}">
-				<option scope="<c:out value="${row.out_of}"/>" value="<c:out value="${row.id}"/>"> <c:out value="${row.sub_name}"/></option>
+				<option scope="<c:out value="${row.out_of}"/>" value="<c:out value="${row.id}"/>"> <c:out value="${row.name}"/></option>
 			</c:forEach>
 		</select>
 		

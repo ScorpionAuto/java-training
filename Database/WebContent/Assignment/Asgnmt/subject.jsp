@@ -14,22 +14,31 @@
 </head>
 <body onload='document.form1.text1.focus()'>
 
-<center><h4>Subject Table</h4></center>
-<table border="1px" cellspacing="0" style="border-collapse: collapse;" align="center">
-	<form name="form1" action="sub_process.jsp" onsubmit="return alphanumeric(document.form1.text1,document.form1.text2)">
-		<tr>
-			<td>Subject Name</td>
-			<td><input type="text" name="text1"></td>
-		</tr>
-		<tr>
-			<td>Out_of</td>
-			<td><input type="text" name="text2"></td>
-		</tr>
-		<tr>
-			<td colspan="2"><center><input type="submit" value="Insert"></center></td>
-		</tr>
-	</form>
-</table>
+<%@include file="subject.css" %>
+
+<div align='center'>
+	<div class='main'>
+	
+		<div id='heading'>
+				<h2>Subject Input Table</h2>
+	            <h5>Please Fill The Details</h5>
+	    </div>
+            
+		<div class='section'>
+			<form name="form1" action="sub_process.jsp" onsubmit="return alphanumeric(document.form1.text1,document.form1.text2)">
+			
+			<span id='data'>Subject Name:</span>
+			<span id='box'><input type='text' name='text1' size='17px'></span>
+			
+			<span id='data'>Out Of Marks :</span>
+			<span id='box'><input type='text' name='text2' size='17px'></span>
+			
+			<div class='footer'><input type='submit' value='Add/Insert'></div>
+				 
+			</form>
+		</div>
+	</div>
+</div>
 
 <script>
 	function alphanumeric(x,y)  

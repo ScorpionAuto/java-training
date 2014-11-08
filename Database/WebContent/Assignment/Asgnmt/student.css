@@ -1,0 +1,103 @@
+<style type="text/css">
+            * {margin: 0;padding: 0;}
+            .main{
+            width:40%;
+            border: 1px solid #CCFC8C;
+            background-color:  white;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .main #heading{
+            width: 100%;
+            height: 57px;
+            color: white;
+            background-color: #9DC45F;
+            text-align: left;
+            position: relative;
+        }
+        
+        .main #heading h2{
+            padding-top: 11px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .main #heading h5{
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .main .section{
+            width: 100%;
+            overflow: hidden;
+            clear: both;
+            background-color: #FBFFF5; 
+            position: relative;
+        }
+        .main .section #data{
+            float: left;
+            padding-top: 10px;
+            padding-left: 40px;
+            padding-bottom: 0;
+            font-size: 20px;
+            clear: both;
+            position: relative;
+        }
+        .main .section #box{
+           float: left;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            clear: both;
+            padding-left: 39px;
+            position: relative;
+        }
+        
+        .main .section #box input{
+        	height:23px;
+        	position: relative;
+        }
+        
+        .main .section #box select{
+        	width: 147px;
+			height: 26px;
+			font-size: 16px;
+			font-weight: normal;
+			position: relative;
+        }
+        .main .section #buton input{
+        
+        	background-color: #9DC45F;
+			color: white;
+			width: 91px;
+			height: 31px;
+			font-weight: bold;
+			font-size: medium;
+			border-radius: 12px;
+			margin-right: 248px;
+			margin-top: 3px;
+			float: right;
+			position: relative;
+        }
+        
+       .main  .section .footer{
+            clear: both;
+            float: right;
+            margin-right: 20px;
+            margin-top: 12px;
+            margin-bottom: 13px;
+            position: relative;
+        }
+        
+        .main .section .footer input
+        {
+            background-color: #9DC45F;
+			color: white;
+			width: 99px;
+			height: 40px;
+			font-weight: bold;
+			font-size: medium;
+			border-radius: 12px;
+			position: relative;
+        }
+</style>

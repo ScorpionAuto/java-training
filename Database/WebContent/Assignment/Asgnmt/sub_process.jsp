@@ -13,6 +13,11 @@
 <title>Subject Name Insert</title>
 </head>
 <body>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+
+<%@ include file="message.html" %>
+ <br/><br/><br/>
+ 
 <%
 	String nm=null;
 	nm=request.getParameter("text1");
@@ -32,16 +37,19 @@
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-         int j=st.executeUpdate("insert into subject(sub_name,out_of) values('"+nm+"','"+ou+"')");
-         out.println("<br/>Data is successfully inserted!<br/><br/>");
+         int j=st.executeUpdate("insert into subject(name,out_of) values('"+nm+"','"+ou+"')");
+       
          
      	 ResultSet rs=st.executeQuery("select * from subject");
  %>
- 		<table border="1" style="border-collapse: collapse;; width: 100%;" >
+ 
+ <hr><br/>
+ 
+ 		<table class="my" border="1" style="border-collapse: collapse;; width: 100%;" >
              <tr>
-                 <th>id</th>
-                 <th>Subject_Name</th>
-                 <th>Out_of</th>
+                 <th>Id</th>
+                 <th>Subject Name</th>
+                 <th>Out Of</th>
              </tr>
              <% while(rs.next()){ %>
              <tr>
@@ -61,8 +69,10 @@
 	}
  %>
  
- <form action="index.jsp" method="post">
-	<input type="submit"  value="Index">
+ <br/><br/>
+ 
+ <form action="marks.jsp" method="post">
+	<input type="submit"  value="Back" style='background-color: #9DC45F;color: white;width: 99px;height: 40px;font-weight: bold;font-size: medium;border-radius: 12px;float: left;'>
 </form>
  
 </body>

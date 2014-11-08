@@ -13,6 +13,11 @@
 <title>Branch Name Insert</title>
 </head>
 <body>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+
+ <%@ include file="message.html" %>
+ <br/><br/><br/>
+ 
 <%
 	String nm=null;
 	nm=request.getParameter("br_nm");
@@ -27,12 +32,14 @@
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-         int i=st.executeUpdate("insert into branch(br_name) values('"+nm+"')");
-         out.println("<br/>Data is successfully inserted!<br/><br/>");
+         int i=st.executeUpdate("insert into branch(name) values('"+nm+"')");
          
      	 ResultSet rs=st.executeQuery("select * from branch");
  %>
- 		<table border="1" style="border-collapse: collapse;; width: 100%;" >
+ 
+ <hr><br/>
+ 
+ 		<table class="my" border="1" style="border-collapse: collapse;; width: 100%;" >
              <tr>
                  <th>Id</th>
                  <th>Branch_Name</th>
@@ -54,8 +61,9 @@
 	}
  %>
 
-<form action="index.jsp" method="post">
-	<input type="submit"  value="Index">
+<br/><br/>
+<form action="student.jsp" method="post">
+	<input type="submit"  value="Back" style='background-color: #9DC45F;color: white;width: 99px;height: 40px;font-weight: bold;font-size: medium;border-radius: 12px;float: left;'>
 </form>
 
 </body>

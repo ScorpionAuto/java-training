@@ -15,6 +15,11 @@
 </head>
 <body>
 
+<link href="style.css" rel="stylesheet" type="text/css"/>
+
+<%@ include file="message.html" %>
+ <br/><br/><br/>
+ 
 <%
 	String nm=null;
 	nm=request.getParameter("text1");
@@ -34,37 +39,41 @@
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-         int j=st.executeUpdate("insert into student(br_id,stud_name) values('"+id+"','"+nm+"')");
-     	 out.println("<br/>Data is successfully inserted!<br/><br/>");
+         int j=st.executeUpdate("insert into student(name,branch_id) values('"+nm+"','"+id+"')");
         
     	 ResultSet rs=st.executeQuery("select * from student");
 %>
-		<table border="1" style="border-collapse: collapse;; width: 100%;" >
-            <tr>
-                <th>Id</th>
-                <th>Branch_id</th>
-                <th>Student_Name</th>
-            </tr>
-            <% while(rs.next()){ %>
-            <tr>
-                <td> <%= rs.getInt(1) %></td>
-                <td> <%= rs.getInt(2) %></td>
-                <td> <%= rs.getString(3) %></td>
-            </tr>
-            <% } %>
-        </table>
-<%	
-				
-      }
-      catch(Exception e){
-        System.out.print(e);
-        e.printStackTrace();
-      }
-	}
-%>
 
-<form action="index.jsp" method="post">
-	<input type="submit"  value="Index">
+ <hr><br/>
+ 
+ 		<table class="my" border="1" style="border-collapse: collapse;; width: 100%;" >
+             <tr>
+                 <th>Id</th>
+                 <th>Student Name</th>
+                 <th>Branch Id</th>
+             </tr>
+             <% while(rs.next()){ %>
+             <tr>
+                 <td> <%= rs.getInt(1) %></td>
+                 <td> <%= rs.getString(2)%></td>
+                 <td> <%=  rs.getInt(3) %></td>
+             </tr>
+             <% } %>
+         </table>
+ <%	
+ 				
+       }
+       catch(Exception e){
+         System.out.print(e);
+         e.printStackTrace();
+       }
+	}
+ %>
+ 
+ <br/><br/>
+ 
+ <form action="marks.jsp" method="post">
+	<input type="submit"  value="Back" style='background-color: #9DC45F;color: white;width: 99px;height: 40px;font-weight: bold;font-size: medium;border-radius: 12px;float: left;'>
 </form>
 
 </body>

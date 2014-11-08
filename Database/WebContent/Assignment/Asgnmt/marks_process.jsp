@@ -14,6 +14,11 @@
 </head>
 <body>
 
+<link href="style.css" rel="stylesheet" type="text/css"/>
+
+<%@ include file="message.html" %>
+ <br/><br/><br/>
+ 
 <%
 	int stud_id= Integer.parseInt(request.getParameter("stu"));
 //	out.print("<br/>Student_id :: "+stud_id);
@@ -39,22 +44,18 @@
          Class.forName("com.mysql.jdbc.Driver");
          Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Big_Test", "root", "");
          Statement st=con.createStatement();
-                 
-         double per=(mrk/o)*100;
-         //out.print("<br/>percentage :: "+per); 
          
-          int j=st.executeUpdate("insert into marks(sub_id,stud_id,marks,percentage) values('"+sub_id+"','"+stud_id+"','"+mrk+"','"+per+"')");
-       	 out.println("<br/>Data is successfully inserted!"); 
+          int j=st.executeUpdate("insert into marks(subject_id,student_id,marks) values('"+sub_id+"','"+stud_id+"','"+mrk+"')"); 
 
 		ResultSet rs=st.executeQuery("select * from marks");
 %>
-		<table border="1" style="border-collapse: collapse;; width: 100%;" >
+<hr><br/>
+		<table class="my" border="1" style="border-collapse: collapse;" width: 100%;" >
             <tr>
                 <th>Id</th>
                 <th>Student_Id</th>
                 <th>Subject_Id</th>
                 <th>Marks</th>
-                <th>Percentage</th>
             </tr>
             <% while(rs.next()){ %>
             <tr>
@@ -62,7 +63,6 @@
                 <td> <%= rs.getString(2) %></td>
                 <td> <%= rs.getString(3) %></td>
                 <td> <%= rs.getInt(4) %></td>
-                <td> <%= rs.getDouble(5) %></td>
             </tr>
             <% } %>
         </table>
@@ -76,8 +76,10 @@
 	}
 %>
 
+<br/><br/>
+
 <form action="index.jsp" method="post">
-	<input type="submit"  value="Index">
+	<input type="submit"  value="Back" style='background-color: #9DC45F;color: white;width: 99px;height: 40px;font-weight: bold;font-size: medium;border-radius: 12px;float: left;'>
 </form>
 
 </body>
